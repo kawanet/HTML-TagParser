@@ -206,12 +206,11 @@ package HTML::TagParser;
 use strict;
 use Symbol;
 use Carp;
+use Encode ();
 
 use vars qw( $VERSION );
-$VERSION = "0.16.3";
+$VERSION = "0.16.4";
 
-my $J2E        = {qw( jis ISO-2022-JP sjis Shift_JIS euc EUC-JP ucs2 UCS2 )};
-my $E2J        = { map { lc($_) } reverse %$J2E };
 my $SEC_OF_DAY = 60 * 60 * 24;
 
 #  [000]        '/' if closing tag.
@@ -276,14 +275,8 @@ sub parse {
     my $txtref = ref $text ? $text : \$text;
 
     my $charset = HTML::TagParser::Util::find_meta_charset($txtref);
-    if ( !$charset && $$txtref =~ /[^\000-\177]/ ) {
-        HTML::TagParser::Util::load_jcode();
-        my ($jc) = Jcode::getcode($txtref) if $Jcode::VERSION;
-        $charset = $J2E->{$jc} if $J2E->{$jc};
-    }
     $self->{charset} ||= $charset;
-    &HTML::TagParser::Util::load_encode() if ( $] > 5.008 );
-    if ($charset && (defined $Encode::VERSION && Encode::find_encoding($charset))) {
+    if ($charset && Encode::find_encoding($charset)) {
         HTML::TagParser::Util::encode_from_to( $txtref, $charset, "utf-8" );
     }
     my $flat = HTML::TagParser::Util::html_to_flat($txtref);
@@ -678,73 +671,8 @@ sub encode_from_to {
     return     if ( $from     eq "" );
     return     if ( $to       eq "" );
     return $to if ( uc($from) eq uc($to) );
-    &load_encode() if ( $] > 5.008 );
-    if ( defined $Encode::VERSION ) {
-        # 2006/11/01 FB_XMLCREF -> XMLCREF see [Jcode5 802]
-        Encode::from_to( $$txtref, $from, $to, Encode::XMLCREF() );
-    }
-    elsif ( (  uc($from) eq "ISO-8859-1"
-            || uc($from) eq "US-ASCII"
-            || uc($from) eq "LATIN-1" ) && uc($to) eq "UTF-8" ) {
-        &latin1_to_utf8($txtref);
-    }
-    else {
-        my $jfrom = &get_jcode_name($from);
-        my $jto   = &get_jcode_name($to);
-        return $to if ( uc($jfrom) eq uc($jto) );
-        if ( $jfrom && $jto ) {
-            &load_jcode();
-            if ( defined $Jcode::VERSION ) {
-                Jcode::convert( $txtref, $jto, $jfrom );
-            }
-            else {
-                Carp::croak "Jcode.pm is required: $from to $to";
-            }
-        }
-        else {
-            Carp::croak "Encode.pm is required: $from to $to";
-        }
-    }
-    $to;
-}
-
-sub latin1_to_utf8 {
-    my $txtref = shift;
-    $$txtref =~ s{
-        ([\x80-\xFF])
-    }{
-        pack( "C2" => 0xC0|(ord($1)>>6),0x80|(ord($1)&0x3F) )
-    }exg;
-}
-
-sub load_jcode {
-    return if defined $Jcode::VERSION;
-    local $@;
-    eval { require Jcode; };
-}
-
-sub load_encode {
-    return if defined $Encode::VERSION;
-    local $@;
-    eval { require Encode; };
-}
-
-sub get_jcode_name {
-    my $src = shift;
-    my $dst;
-    if ( $src =~ /^utf-?8$/i ) {
-        $dst = "utf8";
-    }
-    elsif ( $src =~ /^euc.*jp$/i ) {
-        $dst = "euc";
-    }
-    elsif ( $src =~ /^(shift.*jis|cp932|windows-31j)$/i ) {
-        $dst = "sjis";
-    }
-    elsif ( $src =~ /^iso-2022-jp/ ) {
-        $dst = "jis";
-    }
-    $dst;
+    Encode::from_to( $$txtref, $from, $to, Encode::XMLCREF() );
+    return $to;
 }
 
 # ----------------------------------------------------------------
