@@ -1,16 +1,18 @@
 # ----------------------------------------------------------------
     use strict;
-    use Test::More tests => 10;
+    use bytes;
+    use Test::More tests => 13;
     BEGIN { use_ok('HTML::TagParser') };
 # ----------------------------------------------------------------
     my $FILES = {
 		"t/sample/charset-latin1.html"	=>	"Latin-1",
 		"t/sample/charset-8859-1.html"	=>	"ISO-8859-1",
 		"t/sample/charset-utf8.html"	=>	"UTF-8",
+		"t/sample/charset-bogus.html"   =>      "windows-100%",
 	};
 # ----------------------------------------------------------------
 	my $ingy;
-	foreach my $file ( keys %$FILES ) {
+	foreach my $file ( sort { $FILES->{$a} cmp $FILES->{$b} } keys %$FILES ) {
 		my $code = $FILES->{$file};
 	    my $html = HTML::TagParser->new( $file );
 		ok( ref $html, "$code open" );
