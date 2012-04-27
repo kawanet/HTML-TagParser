@@ -282,7 +282,8 @@ sub parse {
         $charset = $J2E->{$jc} if $J2E->{$jc};
     }
     $self->{charset} ||= $charset;
-    if ($charset) {
+    &HTML::TagParser::Util::load_encode() if ( $] > 5.008 );
+    if ($charset && (defined $Encode::VERSION && Encode::find_encoding($charset))) {
         HTML::TagParser::Util::encode_from_to( $txtref, $charset, "utf-8" );
     }
     my $flat = HTML::TagParser::Util::html_to_flat($txtref);
