@@ -1,6 +1,6 @@
 #!/bin/sh -v
 
-# ISO-8859-1 
+# ISO-8859-1
 wget -N http://www.kawa.net/xp/index-e.html
 
 # Shift_JIS
