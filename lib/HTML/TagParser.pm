@@ -208,7 +208,7 @@ use Symbol;
 use Carp;
 
 use vars qw( $VERSION );
-$VERSION = "0.16.1";
+$VERSION = "0.16.3";
 
 my $J2E        = {qw( jis ISO-2022-JP sjis Shift_JIS euc EUC-JP ucs2 UCS2 )};
 my $E2J        = { map { lc($_) } reverse %$J2E };
@@ -556,6 +556,7 @@ use strict;
 
 sub xml_unescape {
     my $str = shift;
+    return unless defined $str;
     $str =~ s/&quot;/"/g;
     $str =~ s/&lt;/</g;
     $str =~ s/&gt;/>/g;

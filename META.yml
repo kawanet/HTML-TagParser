@@ -1,11 +1,23 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         HTML-TagParser
-version:      0.16
-version_from: lib/HTML/TagParser.pm
-installdirs:  site
+--- #YAML:1.0
+name:               HTML-TagParser
+version:            0.16.3
+abstract:           Yet another HTML document parser with DOM-like methods
+author:
+    - Yusuke Kawasaki
+license:            perl
+distribution_type:  module
+configure_requires:
+    ExtUtils::MakeMaker:  6.55
+build_requires:
+    Test::More:  0
 requires:
-    Test::More:                    0
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.30_01
+    Carp:    0
+    Symbol:  0
+no_index:
+    directory:
+        - t
+        - inc
+generated_by:       ExtUtils::MakeMaker version 6.56
+meta-spec:
+    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
+    version:  1.4
