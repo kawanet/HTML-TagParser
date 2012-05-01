@@ -1,0 +1,14 @@
+# HTML::TagParser Changes
+
+2006/11/01 (0.14)
+    * FB_XMLCREF -> XMLCREF changed. see [Jcode5 802]
+    * POD typo fixed.
+
+2006/05/06 (0.13)
+    * CPAN release
+
+2006/03/08 (0.01)
+    * first version
+
+# http://www.kawa.net/works/perl/html/tagparser-e.html       (English)
+# http://www.kawa.net/works/perl/html/tagparser.html#changes (Japanese)
