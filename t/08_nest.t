@@ -28,12 +28,12 @@ EOT
 	like( $body->innerText(), qr/AAA.*BBB.*CCC.*DDD.*EEE.*FFF/s, "body" );
 
 	my $foo = $html->getElementById( "foo" );
-	like( $foo->innerText(), qr/AAA/s, "foo" );
-#	like( $foo->innerText(), qr/AAA.*BBB.*CCC.*DDD.*EEE.*FFF/s, "foo" );
+#	like( $foo->innerText(), qr/AAA/s, "foo" );
+	like( $foo->innerText(), qr/AAA.*BBB.*CCC.*DDD.*EEE.*FFF/s, "foo" );
 
 	my $bar = $html->getElementById( "bar" );
-	like( $bar->innerText(), qr/BBB.*CCC.*DDD\W*$/s, "bar" );
-#	like( $bar->innerText(), qr/BBB.*CCC.*DDD.*EEE/s, "bar" );
+#	like( $bar->innerText(), qr/BBB.*CCC.*DDD\W*$/s, "bar" );
+	like( $bar->innerText(), qr/BBB.*CCC.*DDD.*EEE/s, "bar" );
 # ----------------------------------------------------------------
 ;1;
 # ----------------------------------------------------------------

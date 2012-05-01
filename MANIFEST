@@ -17,6 +17,8 @@ Changes
 MANIFEST
 META.yml
 make-dist.sh
+t/12_navigation.t
+t/08_nest.t
 t/22_yahoo.t
 t/11_invalid_attr.t
 t/23_flickr.t
@@ -26,7 +28,6 @@ t/09_broken.t
 t/07_getelem.t
 t/06_japanese.t
 t/10_escape.t
-t/08_nest.t
 t/05_charset.t
 t/04_fetch.t
 t/03_open.t
