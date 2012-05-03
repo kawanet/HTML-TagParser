@@ -14,14 +14,7 @@
         "t/sample/charset-jp-utf8.html" =>  "UTF-8",
     };
 # ----------------------------------------------------------------
-SKIP: {
-    if ( $] < 5.008 ) {
-        local $@;
-        eval { require Jcode; };
-        skip( "Jcode is not loaded.", 9 ) if $@;
-    }
     &test_japanese();
-}
 # ----------------------------------------------------------------
 sub test_japanese {
     my $prev;

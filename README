@@ -159,11 +159,16 @@ INTERNATIONALIZATION
     The parsed document's encoding is converted as this class's fixed
     internal encoding "UTF-8".
 
-AUTHOR
-    Yusuke Kawasaki, http://www.kawa.net/
+AUTHORS AND CONTRIBUTORS
+    drry [drry] Juergen Weigert [jnw] Yusuke Kawasaki [kawasaki] [kawanet]
+    Tim Wilde [twilde]
 
 COPYRIGHT AND LICENSE
-    Copyright (c) 2006-2008 Yusuke Kawasaki. All rights reserved. This
-    program is free software; you can redistribute it and/or modify it under
-    the same terms as Perl itself.
+    The following copyright notice applies to all the files provided in this
+    distribution, including binary files, unless explicitly noted otherwise.
+
+    Copyright 2006-2012 Yusuke Kawasaki
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 

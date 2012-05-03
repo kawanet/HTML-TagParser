@@ -189,13 +189,20 @@ by parsing its meta element.
 The parsed document's encoding is converted
 as this class's fixed internal encoding "UTF-8".
 
-=head1 AUTHOR
+=head1 AUTHORS AND CONTRIBUTORS
 
-Yusuke Kawasaki, http://www.kawa.net/
+drry [drry]
+Juergen Weigert [jnw]
+Yusuke Kawasaki [kawasaki] [kawanet]
+Tim Wilde [twilde]
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2006-2008 Yusuke Kawasaki. All rights reserved.
+The following copyright notice applies to all the files provided in this
+distribution, including binary files, unless explicitly noted otherwise.
+
+Copyright 2006-2012 Yusuke Kawasaki
+
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
 
@@ -203,13 +210,13 @@ modify it under the same terms as Perl itself.
 # ----------------------------------------------------------------
 
 package HTML::TagParser;
+use 5.008_001;
 use strict;
-use Symbol;
-use Carp;
+use Symbol ();
+use Carp ();
 use Encode ();
 
-use vars qw( $VERSION );
-$VERSION = "0.16.4";
+our $VERSION = "0.20";
 
 my $SEC_OF_DAY = 60 * 60 * 24;
 

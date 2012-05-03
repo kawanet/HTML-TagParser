@@ -22,6 +22,7 @@ t/21_index-e.t
 t/22_yahoo.t
 t/23_flickr.t
 t/sample/charset-8859-1.html
+t/sample/charset-bogus.html
 t/sample/charset-jp-euc.html
 t/sample/charset-jp-sjis.html
 t/sample/charset-jp-utf8.html
