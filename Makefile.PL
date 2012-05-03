@@ -13,7 +13,7 @@ WriteMakefile(
     PREREQ_PM           =>  {
         'Symbol'        =>  '0',
         'Carp'          =>  '0',
-#       'URI::Fetch'    =>  '0',
+        'Encode'	=>  '0',
     },
     AUTHOR              =>  'Yusuke Kawasaki',
     LICENSE             =>  'perl',
