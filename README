@@ -160,8 +160,10 @@ INTERNATIONALIZATION
     internal encoding "UTF-8".
 
 AUTHORS AND CONTRIBUTORS
-    drry [drry] Juergen Weigert [jnw] Yusuke Kawasaki [kawasaki] [kawanet]
-    Tim Wilde [twilde]
+        drry [drry]
+        Juergen Weigert [jnw]
+        Yusuke Kawasaki [kawasaki] [kawanet]
+        Tim Wilde [twilde]
 
 COPYRIGHT AND LICENSE
     The following copyright notice applies to all the files provided in this

@@ -191,10 +191,10 @@ as this class's fixed internal encoding "UTF-8".
 
 =head1 AUTHORS AND CONTRIBUTORS
 
-drry [drry]
-Juergen Weigert [jnw]
-Yusuke Kawasaki [kawasaki] [kawanet]
-Tim Wilde [twilde]
+    drry [drry]
+    Juergen Weigert [jnw]
+    Yusuke Kawasaki [kawasaki] [kawanet]
+    Tim Wilde [twilde]
 
 =head1 COPYRIGHT AND LICENSE
 
